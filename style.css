@@ -1,52 +1,16 @@
- 
- 
-body {
-    font-family: sans-serif;
-    padding: 20px;
-    line-height: 1.6;
-}
-
- 
-.form-card {
-    max-width: 300px;
-}
-
- 
-.row {
-    margin-bottom: 15px;
-}
-
-label {
-    display: block;
-    font-weight: bold;
-    font-size: 0.9rem;
-}
-
-input {
-    width: 100%;
-    padding: 5px 0;
-    border: none;
-    border-bottom: 1px solid #ccc;  
-    outline: none;
-}
-
- 
-input.invalid { border-bottom: 1px solid red; }
-input.valid { border-bottom: 1px solid green; }
-
-.msg {
-    font-size: 11px;
-    color: red;
-    height: 12px;
-}
-
-button {
-    margin-top: 10px;
-    cursor: pointer;
-}
-
-.success-message {
-    display: none;
-    font-weight: bold;
-    color: green;
-}
+ body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        input, button {
+            padding: 6px;
+            margin: 4px;
+        }
+        li {
+            margin: 6px 0;
+        }
+        .done {
+            text-decoration: line-through;
+            color: rgb(246, 12, 12);
+        }
+   

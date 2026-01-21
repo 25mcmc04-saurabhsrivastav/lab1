@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="style.css">
+    
+       
+</head>
+<body>
+
+    <h2>To-Do List</h2>
+
+    <input type="text" id="taskInput" placeholder="Enter task">
+    <input type="date" id="dateInput">
+    <button onclick="addTask()">Add</button>
+
+    <br><br>
+    <button onclick="showAll()">All</button>
+    <button onclick="showCompleted()">Completed</button>
+    <button onclick="showPending()">Pending</button>
+
+    <ul id="taskList"></ul>
+
+    <script>
+        let tasks = [];
+
+        function addTask() {
+            let text = document.getElementById("taskInput").value;
+            let date = document.getElementById("dateInput").value;
+
+            if (text === "") {
+                alert("Please enter a task");
+                return;
+            }
+
+            let task = {
+                name: text,
+                completed: false,
+                due: date
+            };
+
+            tasks.push(task);
+            sortByDate();
+            displayTasks(tasks);
+
+            document.getElementById("taskInput").value = "";
+            document.getElementById("dateInput").value = "";
+        }
+
+        function displayTasks(list) {
+            let ul = document.getElementById("taskList");
+            ul.innerHTML = "";
+
+            for (let i = 0; i < list.length; i++) {
+                let li = document.createElement("li");
+
+                li.innerHTML = list[i].name +
+                    (list[i].due ? " (Due: " + list[i].due + ")" : "");
+
+                if (list[i].completed) {
+                    li.className = "done";
+                }
+
+                let doneBtn = document.createElement("button");
+                doneBtn.innerText = "Done";
+                doneBtn.onclick = function () {
+                    list[i].completed = !list[i].completed;
+                    displayTasks(list);
+                };
+
+                let delBtn = document.createElement("button");
+                delBtn.innerText = "Delete";
+                delBtn.onclick = function () {
+                    tasks.splice(tasks.indexOf(list[i]), 1);
+                    displayTasks(tasks);
+                };
+
+                li.appendChild(doneBtn);
+                li.appendChild(delBtn);
+                ul.appendChild(li);
+            }
+        }
+
+        function showAll() {
+            displayTasks(tasks);
+        }
+
+        function showCompleted() {
+            let completed = tasks.filter(t => t.completed);
+            displayTasks(completed);
+        }
+
+        function showPending() {
+            let pending = tasks.filter(t => !t.completed);
+            displayTasks(pending);
+        }
+
+        function sortByDate() {
+            tasks.sort(function (a, b) {
+                return new Date(a.due || "2100-01-01") - new Date(b.due || "2100-01-01");
+            });
+        }
+    </script>
+
+</body>
+</html>
