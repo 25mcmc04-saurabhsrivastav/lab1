@@ -1,0 +1,16 @@
+ body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        input, button {
+            padding: 6px;
+            margin: 4px;
+        }
+        li {
+            margin: 6px 0;
+        }
+        .done {
+            text-decoration: line-through;
+            color: rgb(246, 12, 12);
+        }
+   
