@@ -1,0 +1,22 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+header{
+    text-align: center;
+    color: rgb(177, 23, 51);
+    background-color: rgb(61, 165, 42);
+}
+
+nav{
+    text-align:center ;
+}
+nav a{
+    text-decoration: none;
+    margin:12px;
+    color: #545419;
+     font-weight: 800;
+}
+
+
+

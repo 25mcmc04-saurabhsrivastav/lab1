@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration Form</title>
+<link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+
+<div class="form-card">
+    <h2>Register</h2>
+
+    <form id="regForm">
+        <div class="row">
+            <label>Full Name</label>
+            <input type="text" id="name">
+            <div id="nameMsg" class="msg"></div>
+        </div>
+
+        <div class="row">
+            <label>Email</label>
+            <input type="email" id="email">
+            <div id="emailMsg" class="msg"></div>
+        </div>
+
+        <div class="row">
+            <label>Password</label>
+            <input type="password" id="pass">
+            <div id="passMsg" class="msg"></div>
+        </div>
+
+        <div class="row">
+            <label>Date of Birth</label>
+            <input type="date" id="dob">
+            <div id="dobMsg" class="msg"></div>
+        </div>
+
+        <div class="row">
+            <label>Phone</label>
+            <input type="tel" id="phone">
+            <div id="phoneMsg" class="msg"></div>
+        </div>
+
+        <button type="submit" id="submitBtn" disabled>Register</button>
+    </form>
+    
+    <div id="successMsg" class="success-message">
+        Registration Successful
+    </div>
+</div>
+
+<script>
+ 
+const form = document.getElementById("regForm");
+const submitBtn = document.getElementById("submitBtn");
+const successMsg = document.getElementById("successMsg");
+
+const today = new Date();
+const maxDob = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+document.getElementById("dob").max = maxDob.toISOString().split('T')[0];
+
+const fields = {
+    name: { el: 'name', msg: 'nameMsg', validate: v => v.trim().length > 0 },
+    email: { el: 'email', msg: 'emailMsg', validate: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) },
+    pass: { el: 'pass', msg: 'passMsg', validate: v => v.length >= 6 },
+    dob: { el: 'dob', msg: 'dobMsg', validate: v => v !== '' && new Date(v) <= maxDob },
+    phone: { el: 'phone', msg: 'phoneMsg', validate: v => /^\d{10}$/.test(v.replace(/\D/g,'')) }
+};
+
+Object.values(fields).forEach(f => {
+    const input = document.getElementById(f.el);
+    input.addEventListener('input', () => validateField(f));
+});
+
+function validateField(f){
+    const input = document.getElementById(f.el);
+    const msg = document.getElementById(f.msg);
+    const val = input.value;
+    const ok = f.validate(val);
+
+    input.className = ok ? 'valid' : 'invalid';
+    msg.textContent = '';
+
+    if(!ok && val){
+        if(f.el==='name') msg.textContent='Required';
+        if(f.el==='email') msg.textContent='Invalid email';
+        if(f.el==='pass') msg.textContent='Min 6 chars';
+        if(f.el==='dob') msg.textContent='18+ only';
+        if(f.el==='phone') msg.textContent='10 digits';
+    }
+    toggleBtn();
+}
+
+function toggleBtn(){
+    const all = Object.values(fields).every(f=>{
+        return f.validate(document.getElementById(f.el).value);
+    });
+    submitBtn.disabled = !all;
+}
+
+form.onsubmit = function(e){
+    e.preventDefault();
+    form.style.display = 'none';
+    successMsg.style.display = 'block';
+};
+</script>
+
+</body>
+</html>
