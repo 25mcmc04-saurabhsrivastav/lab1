@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEATHERCast | Weather</title>
+    <style>
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.12);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(145deg, #2c3e50, #4ca1af);
+            color: white;
+            overflow: hidden;
+        }
+
+        .app-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 35px 25px;
+            width: 100%;
+            max-width: 360px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            text-transform: uppercase;
+        }
+
+        .search-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        input {
+            padding: 12px 15px;
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            outline: none;
+            text-align: center;
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        button {
+            padding: 12px;
+            border-radius: 12px;
+            border: none;
+            background: white;
+            color: #2c3e50;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #e0e0e0;
+            transform: translateY(-1px);
+        }
+
+        .weather-info {
+            margin-top: 10px;
+        }
+
+        #condition {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+
+        .temp-display {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 6px 0;
+            line-height: 1;
+        }
+
+        .stats-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 15px 10px;
+            border-radius: 15px;
+            flex: 1;
+        }
+
+        .stat-box span {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.7;
+        }
+
+        .stat-box p {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .error {
+            color: #ff9e9e;
+            font-size: 0.85rem;
+            margin-top: 15px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-card">
+    <h1>SkyCast</h1>
+
+    <div class="search-group">
+        <input type="text" id="cityInput" placeholder="Enter city name...">
+        <button id="searchBtn">Check Weather</button>
+    </div>
+
+    <div class="weather-info" id="weatherBox">
+        <p id="condition">Clear Sky</p>
+        <div class="temp-display" id="temp">20.6°C</div>
+        
+        <div class="stats-row">
+            <div class="stat-box">
+                <span>Humidity</span>
+                <p id="humidity">88%</p>
+            </div>
+            <div class="stat-box">
+                <span>Wind</span>
+                <p id="wind">12 km/h</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="error" id="errorBox">City not found. Try again.</div>
+</div>
+
+<script src="./script.js"></script>
+</body>
+</html>
