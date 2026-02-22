@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog>
+  <movie>
+    <title>RRR</title>
+    <director>S. S. Rajamouli</director>
+    <genre>Action</genre>
+    <price>250</price>
+    <release_date>2022-03-25</release_date>
+  </movie>
+  <movie>
+    <title>3 Idiots</title>
+    <director>Rajkumar Hirani</director>
+    <genre>Drama</genre>
+    <price>200</price>
+    <release_date>2009-12-25</release_date>
+  </movie>
+  <movie>
+    <title>Dangal</title>
+    <director>Nitesh Tiwari</director>
+    <genre>Sports</genre>
+    <price>220</price>
+    <release_date>2016-12-23</release_date>
+  </movie>
+  <movie>
+    <title>Baahubali</title>
+    <director>S. S. Rajamouli</director>
+    <genre>Historical</genre>
+    <price>300</price>
+    <release_date>2015-07-10</release_date>
+  </movie>
+</catalog>
