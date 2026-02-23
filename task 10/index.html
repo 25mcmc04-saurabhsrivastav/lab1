@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabs Plugin Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="tab-wrapper" id="myTabs">
+    <ul class="tab-menu">
+        <li data-tab="home">Home</li>
+        <li data-tab="about">About</li>
+        <li data-tab="contact">Contact</li>
+    </ul>
+
+    <div class="tab-content" id="home">
+        <h2>Home</h2>
+        <p>Welcome to the home section.</p>
+    </div>
+
+    <div class="tab-content" id="about">
+        <h2>About</h2>
+        <p>Information about us.</p>
+    </div>
+
+    <div class="tab-content" id="contact">
+        <h2>Contact</h2>
+        <p>Get in touch here.</p>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="tabs.js"></script>
+<script>
+    $('#myTabs').smartTabs({
+        activeClass: 'current',
+        speed: 300,
+        defaultTab: 'home'
+    });
+</script>
+
+</body>
+</html>

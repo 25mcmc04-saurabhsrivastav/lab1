@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(120deg, #f0f0f0, #dfe9f3);
+    margin: 0;
+    padding: 40px;
+}
+
+.tab-wrapper {
+    max-width: 600px;
+    margin: auto;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.tab-menu {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: #333;
+}
+
+.tab-menu li {
+    flex: 1;
+    text-align: center;
+    padding: 15px;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.tab-menu li:hover {
+    background: #555;
+}
+
+.tab-menu li.current {
+    background: #ff6b6b;
+}
+
+.tab-content {
+    display: none;
+    padding: 20px;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
